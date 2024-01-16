@@ -14,13 +14,13 @@ function Read() {
     }, [])
 
     if (loading) {
-        return <h2>Data is Loading ...</h2>
+        return <h2 style={{ color: "black" }}>Data is Loading ...</h2>
     }
 
     return (
         <div className='table-container'>
-            <table className="table">
-                <thead >
+            <table className="table-info">
+                <thead className='headings'>
                     <tr>
                         <th>Sr No.</th>
                         <th>Name</th>
@@ -30,16 +30,16 @@ function Read() {
                     </tr>
                 </thead>
                 {users.map((user, index) => (
-                    <tbody key={user.id}>
+                    <tbody key={user.id} className={index % 2 == 0 ? "gray-bg" : "white-bg"}>
                         <tr>
                             <td>{index + 1}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.age}</td>
-                            <td>
-                                <button>View</button>
-                                <button>Update</button>
-                                <button>Delete</button>
+                            <td className='table-buttons'>
+                                <button><i class="gg-eye-alt"></i></button>
+                                <button><i class="gg-pen"></i></button>
+                                <button><i class="gg-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>

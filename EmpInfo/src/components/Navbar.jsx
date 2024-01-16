@@ -7,8 +7,8 @@ function Navbar() {
     <nav className="navbar">
       <div className="container">
         <ul className="nav-list">
-          <li className="nav-item"><Link to='/'>Create Post </Link></li>
-          <li className="nav-item"><Link to='/users'>All Post</Link></li>
+          <li className="nav-item"><Link to='/'>Create User </Link></li>
+          <li className="nav-item"><Link to='/users'>All Users</Link></li>
         </ul>
       </div>
       <input className="search-bar" type="search" id="search-bar" placeholder="Search..." />
