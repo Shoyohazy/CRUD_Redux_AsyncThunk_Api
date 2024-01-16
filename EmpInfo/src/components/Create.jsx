@@ -26,11 +26,11 @@ function Create() {
                     <input type="text" name="name" onChange={handleChange} />
                 </div>
                 <div className="field-div">
-                    <label class="form-label">Email</label>
+                    <label >Email</label>
                     <input type="email" name="email" onChange={handleChange} />
                 </div>
                 <div className="field-div">
-                    <label class="form-label">Age</label>
+                    <label >Age</label>
                     <input type="text" name="age" onChange={handleChange} />
                 </div>
                 <div className="gender-section">
@@ -42,6 +42,7 @@ function Create() {
                         <input name="gender" value="Female" type="radio" />
                         <label>Female</label>
                     </div>
+
                 </div>
 
                 <div className="submit-button">

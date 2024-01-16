@@ -1,13 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showUser } from '../features/userSlice';
+import { deleteUser, showUser } from '../features/userSlice';
+import { Link } from 'react-router-dom';
 import '../styling/Read.css'
+import Modal from './Modal';
 
 function Read() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.users);
     const { users, loading } = user;
-
+    const [id, setId] = useState();
+    const [popup, setPopup] = useState(false);
+    const handleView = (id) => {
+        setId(id);
+        setPopup(true);
+    }
+    const handleDelete = (id) => {
+        dispatch(deleteUser(id))
+    }
     useEffect(() => {
         //console.log("first from rea")
         dispatch(showUser())
@@ -18,9 +28,10 @@ function Read() {
     }
 
     return (
-        <div className='table-container'>
+        <div className="table-container">
+            {popup && <Modal id={id} setPopup={setPopup} />}
             <table className="table-info">
-                <thead className='headings'>
+                <thead className="headings">
                     <tr>
                         <th>Sr No.</th>
                         <th>Name</th>
@@ -29,24 +40,39 @@ function Read() {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                {users.map((user, index) => (
-                    <tbody key={user.id} className={index % 2 == 0 ? "gray-bg" : "white-bg"}>
+                {users && users.map((user, index) => (
+                    <tbody
+                        key={user.id}
+                        className={index % 2 == 0 ? "gray-bg" : "white-bg"}
+                    >
                         <tr>
                             <td>{index + 1}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.age}</td>
-                            <td className='table-buttons'>
-                                <button><i class="gg-eye-alt"></i></button>
-                                <button><i class="gg-pen"></i></button>
-                                <button><i class="gg-trash"></i></button>
+                            <td className="table-buttons">
+                                <Link>
+                                    <button onClick={() => handleView(user.id)}>
+                                        <i className="gg-eye-alt"></i>
+                                    </button>
+                                </Link>
+                                <Link>
+                                    <button >
+                                        <i className="gg-pen"></i>
+                                    </button>
+                                </Link>
+                                <Link>
+                                    <button onClick={() => handleDelete(user.id)}>
+                                        <i className="gg-trash"></i>
+                                    </button>
+                                </Link>
                             </td>
                         </tr>
                     </tbody>
                 ))}
             </table>
         </div>
-    )
+    );
 }
 
 export default Read

@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   error: null,
 };
-
+//Create action
 export const createUser = createAsyncThunk('users/createUser', async (addedUser, { rejectWithValue }) => {
   const response = await fetch("https://65a4f82652f07a8b4a3e0ac5.mockapi.io/crud/users", {
     method: "POST",
@@ -22,9 +22,22 @@ export const createUser = createAsyncThunk('users/createUser', async (addedUser,
     return rejectWithValue(error)
   }
 })
-
+//read action
 export const showUser = createAsyncThunk('users/showUser', async (args, { rejectWithValue }) => {
   const response = await fetch("https://65a4f82652f07a8b4a3e0ac5.mockapi.io/crud/users");
+
+  try {
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+})
+//Delete action
+export const deleteUser = createAsyncThunk('users/deleteUser', async (id, { rejectWithValue }) => {
+  const response = await fetch(`https://65a4f82652f07a8b4a3e0ac5.mockapi.io/crud/users/${id}`, {
+    method: "DELETE",
+  });
 
   try {
     const result = await response.json();
@@ -57,7 +70,20 @@ const userSlice = createSlice({
       state.users = action.payload;
     })
     builder.addCase(showUser.rejected, (state, action) => {
-      console.log(action.payload)
+      state.loading = false;
+      state.error = action.payload;
+    })
+    builder.addCase(deleteUser.pending, (state) => {
+      state.loading = true;
+    })
+    builder.addCase(deleteUser.fulfilled, (state, action) => {
+      state.loading = false;
+      const { id } = action.payload;
+      if (id) {
+        state.users = state.users.filter((user) => user.id !== id);
+      }
+    })
+    builder.addCase(deleteUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     })

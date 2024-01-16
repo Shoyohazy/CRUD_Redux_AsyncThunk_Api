@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styling/Navbar.css'
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const users = useSelector((state) => state.users.users);
   return (
     <nav className="navbar">
       <div className="container">
         <ul className="nav-list">
           <li className="nav-item"><Link to='/'>Create User </Link></li>
-          <li className="nav-item"><Link to='/users'>All Users</Link></li>
+          <li className="nav-item"><Link to='/users'>All Users({users.length})</Link></li>
         </ul>
       </div>
       <input className="search-bar" type="search" id="search-bar" placeholder="Search..." />

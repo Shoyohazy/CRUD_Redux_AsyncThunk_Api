@@ -33,6 +33,7 @@ th, td {
     background-color: #f2f2f2;
     color: black;
 }
+
 .table-buttons{
     height: 100%;
     padding: 8px;
@@ -43,7 +44,8 @@ th, td {
     border-style: none;
    
 }
-.table-buttons>button{
+
+.table-buttons>a>button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +55,7 @@ th, td {
     background-color: #04AA6D;
     border-radius: 12px;
 }
-.table-buttons>button:hover{
+.table-buttons>a>button:hover{
     transition: 0.3s;
     background-color: #95e4c7;
     cursor: pointer;
