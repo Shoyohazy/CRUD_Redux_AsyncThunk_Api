@@ -28,10 +28,10 @@ function Modal() {
         <div className="modalBackground">
             <div className="modalContainer">
                 <button onClick={() => navigate("/users")}>Close</button>
-                <h2>{currentUser.name}</h2>
-                <h3>{currentUser.email}</h3>
-                <h4>{currentUser.age}</h4>
-                <h4>{currentUser.gender}</h4>
+                <h2>{currentUser?.name}</h2>
+                <h3>{currentUser?.email}</h3>
+                <h4>{currentUser?.age}</h4>
+                <h4>{currentUser?.gender}</h4>
             </div>
         </div>
 

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { UpdateUser, createUser } from "../features/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../styling/Form.css";
 
 function Form(props) {
     console.log("props", props)
     const [users, setUsers] = useState({ ...props });
-    const [isEditing, setIsEditing] = useState(users.id ? true : false);
-
+    const [isEditing, setIsEditing] = useState(false);
+    const { id } = useParams;
+    if (id) {
+        setIsEditing(true)
+    }
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleChange = (e) => {
@@ -23,6 +26,7 @@ function Form(props) {
             dispatch(UpdateUser(users));
             setIsEditing(false);
         } else {
+            //dispatch post
             dispatch(createUser(users));
         }
         navigate("/users");

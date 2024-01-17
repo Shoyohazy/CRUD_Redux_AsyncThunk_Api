@@ -9,17 +9,13 @@ function UserTable() {
     const user = useSelector(state => state.users);
     const { users, loading } = user;
     const [id, setId] = useState();
-    const [popup, setPopup] = useState(false);
     const handleView = (id) => {
         setId(id);
-        setPopup(true);
     }
     const handleDelete = (id) => {
         dispatch(deleteUser(id))
     }
-
     useEffect(() => {
-        //console.log("first from rea")
         dispatch(showUser())
     }, [])
 
@@ -46,9 +42,9 @@ function UserTable() {
                     >
                         <tr>
                             <td>{index + 1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.age}</td>
+                            <td>{user?.name}</td>
+                            <td>{user?.email}</td>
+                            <td>{user?.age}</td>
                             <td className="table-buttons">
                                 <Link to={`/users/${user.id}`}>
                                     <button onClick={() => handleView(user.id)}>
