@@ -12,7 +12,6 @@ export const createUser = createAsyncThunk('users/createUser', async (addedUser,
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(addedUser)
   })
-  console.log(createUser)
   try {
 
     const result = await response.json();

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, showUser } from '../features/userSlice';
 import { Link } from 'react-router-dom';
-import '../styling/Read.css'
+import '../styling/UserTable.css'
 import Modal from './Modal';
 
-function Read() {
+function UserTable() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.users);
     const { users, loading } = user;
@@ -18,6 +18,9 @@ function Read() {
     const handleDelete = (id) => {
         dispatch(deleteUser(id))
     }
+    const updateStatePopup = (newState) => {
+        setPopup
+    }
     useEffect(() => {
         //console.log("first from rea")
         dispatch(showUser())
@@ -29,7 +32,7 @@ function Read() {
 
     return (
         <div className="table-container">
-            {popup && <Modal id={id} setPopup={setPopup} />}
+            {/* {popup && <Modal />} */}
             <table className="table-info">
                 <thead className="headings">
                     <tr>
@@ -51,12 +54,12 @@ function Read() {
                             <td>{user.email}</td>
                             <td>{user.age}</td>
                             <td className="table-buttons">
-                                <Link>
+                                <Link to={{ pathname: `/users/${user.id}`, state: { updateStatePopup } }}>
                                     <button onClick={() => handleView(user.id)}>
                                         <i className="gg-eye-alt"></i>
                                     </button>
                                 </Link>
-                                <Link>
+                                <Link to={`/${user.id}`}>
                                     <button >
                                         <i className="gg-pen"></i>
                                     </button>
@@ -75,6 +78,6 @@ function Read() {
     );
 }
 
-export default Read
+export default UserTable;
 
 

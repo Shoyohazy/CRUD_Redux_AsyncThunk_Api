@@ -13,7 +13,7 @@
     opacity: 0.95;
   }
   
-  .modalContainer {
+.modalBackground>.modalContainer {
     display: flex;
     justify-content: center;
     align-items: center;

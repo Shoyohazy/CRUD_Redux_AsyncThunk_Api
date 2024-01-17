@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../features/userSlice";
 import { useNavigate } from "react-router-dom";
-import '../styling/Create.css';
+import '../styling/Form.css';
 
-function Create() {
+function Form() {
     const [users, setUsers] = useState({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -53,4 +53,4 @@ function Create() {
     );
 }
 
-export default Create;
+export default Form;

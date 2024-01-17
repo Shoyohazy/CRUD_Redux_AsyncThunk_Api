@@ -1,11 +1,14 @@
 import { useSelector } from 'react-redux'
 import '../styling/Modal.css'
 import { useEffect, useState } from 'react'
-function Modal({ id, setPopup }) {
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+function Modal() {
     // const userData = useSelector((state) => state.users.users);
+    const { id } = useParams();
     const [currentUser, setCurrentUser] = useState({});
 
     const data = useEffect(() => {
+        // updateStatePopup()
         getUser();
     }, [])
 
@@ -20,16 +23,20 @@ function Modal({ id, setPopup }) {
         }
     }
 
+    const navigate = useNavigate();
+
     return (
+
         <div className="modalBackground">
             <div className="modalContainer">
-                <button onClick={() => setPopup(false)}>Close</button>
+                <button onClick={() => navigate("/users")}>Close</button>
                 <h2>{currentUser.name}</h2>
                 <h3>{currentUser.email}</h3>
                 <h4>{currentUser.age}</h4>
                 <h4>{currentUser.gender}</h4>
             </div>
         </div>
+
     )
 }
 

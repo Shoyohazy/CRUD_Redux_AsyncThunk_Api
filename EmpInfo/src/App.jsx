@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Create from "./components/Create";
+import Form from "./components/Form";
 import Navbar from "./components/Navbar";
-import Read from "./components/Read";
+import UserTable from "./components/UserTable";
 import Modal from "./components/Modal";
 
 function App() {
@@ -11,9 +11,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Create />} />
-          <Route path="/users" element={<Read />} />
+          <Route path="/" element={<Form />} />
+          <Route path="/users" element={<UserTable />} />
           <Route path="/users/:id" element={<Modal />} />
+          <Route path="/:id" element={<Form />} />
         </Routes>
       </BrowserRouter>
     </>
