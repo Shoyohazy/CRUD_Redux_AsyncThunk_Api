@@ -4,6 +4,8 @@ import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import UserTable from "./components/UserTable";
 import Modal from "./components/Modal";
+import AddUser from "./components/AddUser";
+import UpdateUser from "./components/UpdateUser";
 
 function App() {
   return (
@@ -11,10 +13,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Form />} />
+          <Route path="/" element={<AddUser />} />
           <Route path="/users" element={<UserTable />} />
           <Route path="/users/:id" element={<Modal />} />
-          <Route path="/:id" element={<Form />} />
+          <Route path="/:id" element={<UpdateUser />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -18,9 +18,7 @@ function UserTable() {
     const handleDelete = (id) => {
         dispatch(deleteUser(id))
     }
-    const updateStatePopup = (newState) => {
-        setPopup
-    }
+
     useEffect(() => {
         //console.log("first from rea")
         dispatch(showUser())
@@ -54,7 +52,7 @@ function UserTable() {
                             <td>{user.email}</td>
                             <td>{user.age}</td>
                             <td className="table-buttons">
-                                <Link to={{ pathname: `/users/${user.id}`, state: { updateStatePopup } }}>
+                                <Link to={`/users/${user.id}`}>
                                     <button onClick={() => handleView(user.id)}>
                                         <i className="gg-eye-alt"></i>
                                     </button>
