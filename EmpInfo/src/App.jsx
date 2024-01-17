@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<AddUser />} />
           <Route path="/users" element={<UserTable />} />
           <Route path="/users/:id" element={<Modal />} />
-          <Route path="/:id" element={<UpdateUser />} />
+          <Route path="/user/:id" element={<UpdateUser />} />
         </Routes>
       </BrowserRouter>
     </>

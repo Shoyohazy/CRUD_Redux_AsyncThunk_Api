@@ -57,7 +57,7 @@ function UserTable() {
                                         <i className="gg-eye-alt"></i>
                                     </button>
                                 </Link>
-                                <Link to={`/${user.id}`}>
+                                <Link to={`/user/${user.id}`}>
                                     <button >
                                         <i className="gg-pen"></i>
                                     </button>
