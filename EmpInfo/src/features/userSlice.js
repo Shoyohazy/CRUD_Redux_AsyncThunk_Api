@@ -108,11 +108,11 @@ const userSlice = createSlice({
     builder.addCase(UpdateUser.fulfilled, (state, action) => {
       state.loading = false;
       const { id } = action.payload;
-      state.users.map((user) => {
+      state.users = state.users.map((user) => {
         if (user.id === id) {
-          return id;
+          user = action.payload
         }
-        return user.id;
+        return user;
       })
     })
     builder.addCase(UpdateUser.rejected, (state, action) => {

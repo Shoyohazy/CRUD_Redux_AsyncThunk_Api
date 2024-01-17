@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../styling/Form.css";
 
 function Form(props) {
+    console.log("props", props)
     const [users, setUsers] = useState({ ...props });
     const [isEditing, setIsEditing] = useState(users.id ? true : false);
 
@@ -38,6 +39,7 @@ function Form(props) {
                             value={users.name}
                             name="name"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="field-div">
@@ -47,6 +49,7 @@ function Form(props) {
                             value={users.email}
                             name="email"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="field-div">

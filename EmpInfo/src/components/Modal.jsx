@@ -3,12 +3,10 @@ import '../styling/Modal.css'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 function Modal() {
-    // const userData = useSelector((state) => state.users.users);
     const { id } = useParams();
     const [currentUser, setCurrentUser] = useState({});
 
     const data = useEffect(() => {
-        // updateStatePopup()
         getUser();
     }, [])
 

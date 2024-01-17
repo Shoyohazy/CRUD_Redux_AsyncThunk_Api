@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 
 function UpdateUser() {
     const [currentUser, setCurrentUser] = useState(null);
-    console.log(currentUser)
+    console.log(currentUser, "currentUser")
     const { id } = useParams();
 
     useEffect(() => {
         getUser(id);
-
     }, [id])
 
     async function getUser() {

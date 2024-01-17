@@ -13,7 +13,7 @@ function Navbar() {
           <li className="nav-item"><Link to='/users'>All Users({users.length})</Link></li>
         </ul>
       </div>
-      <input className="search-bar" type="search" id="search-bar" placeholder="Search..." />
+      {/* <input className="search-bar" type="search" id="search-bar" placeholder="Search..." /> */}
     </nav>
 
   );

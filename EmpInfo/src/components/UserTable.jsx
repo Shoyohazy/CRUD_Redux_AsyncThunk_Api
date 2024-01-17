@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, showUser } from '../features/userSlice';
 import { Link } from 'react-router-dom';
 import '../styling/UserTable.css'
-import Modal from './Modal';
 
 function UserTable() {
     const dispatch = useDispatch();
@@ -30,7 +29,6 @@ function UserTable() {
 
     return (
         <div className="table-container">
-            {/* {popup && <Modal />} */}
             <table className="table-info">
                 <thead className="headings">
                     <tr>
