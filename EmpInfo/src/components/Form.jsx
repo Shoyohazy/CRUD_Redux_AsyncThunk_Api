@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { UpdateUser, createUser } from "../features/userSlice";
 import { useNavigate, useParams } from "react-router-dom";

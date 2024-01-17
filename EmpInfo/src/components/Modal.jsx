@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux'
 import '../styling/Modal.css'
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
 function Modal() {
     const { id } = useParams();
     const [currentUser, setCurrentUser] = useState({});
 
-    const data = useEffect(() => {
+    useEffect(() => {
         getUser();
     }, [])
 
