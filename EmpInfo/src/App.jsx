@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import UserTable from "./components/UserTable";
 import Modal from "./components/Modal";

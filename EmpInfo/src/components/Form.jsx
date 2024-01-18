@@ -16,7 +16,6 @@ function Form(props) {
     const handleChange = (e) => {
         setUsers({ ...users, [e.target.name]: e.target.value });
     };
-    console.log(users);
     const handleSubmit = (e) => {
         e.preventDefault();
 
