@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../styling/Form.css";
 
 function Form(props) {
-    console.log("props", props)
     const [users, setUsers] = useState({ ...props });
     const [isEditing, setIsEditing] = useState(false);
     const { id } = useParams;
@@ -63,6 +62,7 @@ function Form(props) {
                             value={users.age}
                             name="age"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="gender-section">

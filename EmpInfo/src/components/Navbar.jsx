@@ -1,29 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import '../styling/Navbar.css'
-import { useSelector } from "react-redux";
+import "../styling/Navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addSearchUser } from "../features/userSlice";
 
 function Navbar() {
-  const users = useSelector((state) => state.users.users);
+  const { users, searchUser } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    // setSearchData(e.target.value);
+    dispatch(addSearchUser(e.target.value));
+  }
+
   return (
     <nav className="navbar">
       <div className="container">
         <ul className="nav-list">
-          <li className="nav-item"><Link to='/'>Create User </Link></li>
-          <li className="nav-item"><Link to='/users'>All Users({users.length})</Link></li>
+          <li className="nav-item">
+            <Link to="/">Create User </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/users">All Users({users.length})</Link>
+          </li>
         </ul>
       </div>
-      {/* <input className="search-bar" type="search" id="search-bar" placeholder="Search..." /> */}
+      <input
+        className="search-bar"
+        type="search"
+        id="search-bar"
+        placeholder="Search..."
+        value={searchUser}
+        onChange={(e) => handleSearch(e)}
+      />
     </nav>
-
   );
-};
+}
 export default Navbar;
 
-
-
-
-{/* // <div>
+{
+  /* // <div>
     //   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     //     <div className="container-fluid ">
     //       <a href="#" className="navbar-brand">
@@ -51,4 +67,5 @@ export default Navbar;
     //       </div>
     //     </div>
     //   </nav>
-    // </div> */}
+    // </div> */
+}

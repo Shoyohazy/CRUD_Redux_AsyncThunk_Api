@@ -4,6 +4,7 @@ const initialState = {
   users: [],
   loading: false,
   error: null,
+  searchUser: []
 };
 //Create action
 export const createUser = createAsyncThunk('users/createUser', async (addedUser, { rejectWithValue }) => {
@@ -65,6 +66,14 @@ export const UpdateUser = createAsyncThunk('users/UpdateUser', async (updatedUse
 const userSlice = createSlice({
   name: "users",
   initialState,
+  reducers: {
+    addSearchUser(state, action) {
+      state.searchUser = action.payload;
+    },
+    clearSearch(state) {
+      state.searchUser = state.searchUser.splice(0, 1);
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(createUser.pending, (state) => {
       state.loading = true;
@@ -123,3 +132,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+export const { addSearchUser, clearSearch } = userSlice.actions;
