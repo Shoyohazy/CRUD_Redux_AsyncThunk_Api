@@ -37,7 +37,6 @@ function UserTable() {
                 </thead>
                 {users &&
                     users.filter((user) => {
-                        console.log(searchUser)
                         if (searchUser.length === 0) {
                             return user;
                         }
